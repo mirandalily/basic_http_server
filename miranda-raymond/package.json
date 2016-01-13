@@ -1,0 +1,30 @@
+{
+  "name": "miranda-raymond",
+  "version": "1.0.0",
+  "description": "Simple httyp server",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test"
+  },
+  "keywords": [
+    "http",
+    "server"
+  ],
+  "author": "Miranda Raymond",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-http": "^1.0.0",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.4"
+  },
+  "dependencies": {
+    "chai": "^3.4.1"
+  }
+}
