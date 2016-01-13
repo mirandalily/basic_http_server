@@ -23,7 +23,7 @@ exports.server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === ('/greet/' + name) && name.length > 0) {
     console.log(name + ' requested greeting');
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.write('Hello there, ' + name + '!');
+    res.write('Hi there, ' + name + '!');
     return res.end();
   }
 
@@ -42,5 +42,3 @@ exports.server = http.createServer((req, res) => {
   res.write(JSON.stringify({msg: 'Error: Page not found'}));
   return res.end();
 });
-
-server.listen(3000, () => console.log('server up'));

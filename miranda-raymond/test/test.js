@@ -3,13 +3,11 @@ const expect = chai.expect;
 const request = chai.request;
 const chaiHttp = require('chai-http');
 const fs = require('fs');
-
-const httpServer = require(__dirname + '/../server');
-
+const httpServer = require(__dirname + '/../index');
 chai.use(chaiHttp);
 
-describe('http server', () => {
-  it('should respond to GET requests on /index page', (done) => {
+describe('the http server', () => {
+  it('should respond to GET requests at /index route', (done) => {
     chai.request('localhost:3000')
       .get('/')
       .end((err, res) => {
@@ -19,7 +17,7 @@ describe('http server', () => {
       });
   });
 
-  describe('the index', () => {
+  describe('the /index route', () => {
     before((done) => {
       fs.readFile(__dirname + '/../public/index.html', (err, data) => {
         this.index = data.toString();
@@ -40,7 +38,7 @@ describe('http server', () => {
   });
 
   it('should respond to GET requests with the time at /time', (done) => {
-    var whatTime = 'Current date and time: ' + new Date();
+    var timeTest = 'Current date and time: ' + new Date();
     chai.request('localhost:3000')
       .get('/time')
       .end((err, res) => {
@@ -63,13 +61,13 @@ describe('http server', () => {
       });
   });
 
-  it('should give 404 error to GET requests at unknown request', (done) => {
+  it('should respond a 404 error to GET requests at unknown routes', (done) => {
     chai.request('localhost:3000')
       .get('/doesnotexist')
       .end((err, res) => {
         expect(err).to.eql(null);
         expect(res).to.have.status(404);
-        expect(res.body.msg).to.eql('Page not found');
+        expect(res.body.msg).to.eql('Error: Page not found');
         done();
       });
   });
